@@ -7,7 +7,7 @@
 <body>
   <form>
     <table>
-      <tr>
+      <tr id="firstRow">
         <td>Nome</td><td>Quantit&aacute;</td><td>Categoria</td><td>Prezzo Unitario</td>
         <td>
           <input type="submit" id="modify" value="Modifica">
@@ -16,28 +16,11 @@
           <input type="submit" id="delete" value="Elimina">
         </td>
         <td>
-          <input type="submit" id="insert" value="Insersci Elemento">
-        </td>
-      </tr>
-      <tr>
-        <td>Patate</td><td>40</td><td>Cibo</td><td>7.90</td>
-        <td>
-          <input type="checkbox" id="modifica1">
-        </td>
-        <td>
-          <input type="checkbox" id="elimina1">
-        </td>
-      </tr>
-      <tr>
-        <td>Chiodi</td><td>4</td><td>Utensili</td><td>4.3</td>
-        <td>
-          <input type="checkbox" id="modifica2">
-        </td>
-        <td>
-          <input type="checkbox" id="elimina2">
+          <input type="submit" id="insert" onclick="insert()" value="Insersci Elemento">
         </td>
       </tr>
     </table>
   </form>
+  <script src="src/main.js"></script>
 </body>
 </html>
