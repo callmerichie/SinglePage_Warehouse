@@ -22,20 +22,24 @@
     <div id="realContent" class="app">
       <div id="showTable">
         <table id="warehouse">
-          <tr id="firstRow">
-            <th>Nome</th>
-            <th>Quantit&aacute;</th>
-            <th>Categoria</th>
-            <th>Prezzo Unitario</th>
-            <th>
-              <label for="options">Opzioni</label>
-              <select id="options" name="options" onchange="onchangeOption()">
-                <option id="insert" value="insert">Inserisci Elemento</option>
-                <option id="update" value="update">Modifica Elemento</option>
-                <option id="delete" value="delete">Elimina Elemento</option>
-              </select>
-            </th>
-          </tr>
+          <thead id="thead">
+            <tr id="firstRow">
+              <th>Nome</th>
+              <th>Quantit&aacute;</th>
+              <th>Categoria</th>
+              <th>Prezzo Unitario</th>
+              <th>
+                <label for="options">Opzioni</label>
+                <select id="options" name="options" onchange="onchangeOption()">
+                  <option id="insert" value="insert">Inserisci Elemento</option>
+                  <option id="update" value="update">Modifica Elemento</option>
+                  <option id="delete" value="delete">Elimina Elemento</option>
+                </select>
+              </th>
+            </tr>
+          </thead>
+          <tbody id="tbody">
+          </tbody>
         </table>
       </div>
       <div id="forms">

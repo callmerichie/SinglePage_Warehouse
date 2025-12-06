@@ -44,7 +44,17 @@ function insertProduct(event) {
 
   if(validateForm(form)===true){
     console.log("User Insert Values, Insert ROW")
-    product = new Product(fromElements.elements['fnameInsert'].value,fromElements.elements['quantityInsert'].value, fromElements.elements['categoryInsert'].value, fromElements.elements['priceInsert'].value);
+    product = new Product(form.elements['fnameInsert'].value,
+      form.elements['quantityInsert'].value,
+      form.elements['categoryInsert'].value,
+      form.elements['priceInsert'].value);
+    //add the row to the table
+    document.getElementById("tbody").innerHTML =
+      "<tr><td>" + product['name'] + "</td>" +
+      "<td>" + product['quantity'] +  "</td>" +
+      "<td>" + product['category'] + "</td>" +
+      "<td>" + product['price'] + "</td>" +
+      "<td>" + product['date'] + "</td>";
   }else{
     alert("Errore nell'inserimento dati");
     document.getElementById("insertForm").innerHTML = "Errore Inserimento Dati";
