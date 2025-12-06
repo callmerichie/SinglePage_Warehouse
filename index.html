@@ -7,9 +7,9 @@
     .app{
         display: flex;
     }
-    table{
+    table, th, td {
+        border: 1px solid black;
         border-collapse: collapse;
-        border-style: solid;
         width: 100%;
     }
   </style>
@@ -29,10 +29,10 @@
             <th>Prezzo Unitario</th>
             <th>
               <label for="options">Opzioni</label>
-              <select id="options" name="options">
-                <option id="insert">Inserisci Elemento</option>
-                <option id="modify">Modifica Elemento</option>
-                <option id="delete">Elimina Elemento</option>
+              <select id="options" name="options" onchange="onchangeOption()">
+                <option id="insert" value="insert">Inserisci Elemento</option>
+                <option id="modify" value="modify">Modifica Elemento</option>
+                <option id="delete" value="delete">Elimina Elemento</option>
               </select>
             </th>
           </tr>
