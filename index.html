@@ -28,7 +28,8 @@
             <th>Categoria</th>
             <th>Prezzo Unitario</th>
             <th>
-              <select id="options">
+              <label for="options">Opzioni</label>
+              <select id="options" name="options">
                 <option id="insert">Inserisci Elemento</option>
                 <option id="modify">Modifica Elemento</option>
                 <option id="delete">Elimina Elemento</option>
@@ -39,30 +40,29 @@
       </div>
       <div id="forms">
         <form id="insertForm">
-          <label>Inserire Elemento:</label><br>
-          <label>Nome</label>
-          <input type="text" name="name" placeholder="Nome" required>
-          <label>Quantit&aacute;</label>
-          <input type="text" name="quantity" placeholder="Quantita" required><br>
-          <label>Categoria</label>
-          <input type="text" name="category" placeholder="Categoria" required>
-          <label>Prezzo Unitario</label>
-          <input type="number" name="price" placeholder="Prezzo Unitario" required><br>
+          <label for="insert">Inserire Elemento:</label><br>
+          <label for="fnameInsert">Nome</label>
+          <input type="text" id="fnameInsert" name="fnameInsert" placeholder="Nome" required>
+          <label for="quantityInsert">Quantit&aacute;</label>
+          <input type="text" id="quantityInsert" name="quantityInsert" placeholder="Quantita" required><br>
+          <label for="categoryInsert">Categoria</label>
+          <input type="text" id="categoryInsert" name="categoryInsert" placeholder="Categoria" required>
+          <label for="priceInsert">Prezzo Unitario</label>
+          <input type="number" id="priceInsert" name="priceInsert" placeholder="Prezzo Unitario" required><br>
           <input type="submit" value="Inserisci">
         </form>
         <form id="modifyForm">
           <label>Modifica Elemento:</label><br>
-          <label>Nome</label>
-          <input type="text" name="name" placeholder="Nome" required>
-          <label>Quantit&aacute;</label>
-          <input type="text" name="quantity" placeholder="Quantita" required><br>
-          <label>Categoria</label>
-          <input type="text" name="category" placeholder="Categoria" required>
-          <label>Prezzo Unitario</label>
-          <input type="number" name="price" placeholder="Prezzo Unitario" required><br>
+          <label for="fnameModify">Nome</label>
+          <input type="text" id="fnameModify" name="fnameModify" placeholder="Nome" required>
+          <label for="quantityModify">Quantit&aacute;</label>
+          <input type="text" id="quantityModify" name="quantityModify" placeholder="Quantita" required><br>
+          <label for="categoryModify">Categoria</label>
+          <input type="text" id="categoryModify" name="categoryModify" placeholder="Categoria" required>
+          <label for="priceModify">Prezzo Unitario</label>
+          <input type="number" id="priceModify" name="priceModify" placeholder="Prezzo Unitario" required><br>
           <input type="submit" value="Modifica">
         </form>
-
       </div>
     </div>
   </div>
