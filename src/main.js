@@ -4,8 +4,6 @@
 *
 *
 * */
-
-
 class Product {
       constructor(name, quantity, category, price) {
         this.name = name;
@@ -16,20 +14,41 @@ class Product {
       }
 }
 
+//showing which form the user will use
 function onchangeOption(){
+
   const value = document.getElementById("options").value;
 
-  if (value === "insert"){
-    console.log("Lorenzo is a transgender")
-  }else if(value === "modify"){
-    console.log("Stiz is a transgender")
-  }else if (value === "delete"){
-    console.log("Richie loves womens")
+  switch(value){
+
+    case "insert":
+      console.log("User choose to insert value, show insertForm");
+      break;
+
+    case "update":
+      console.log("User choose to update value, show updateForm");
+      break;
+
+    case "delete":
+      console.log("User choose to delete value");
+      break;
   }
 }
 
+function insertProduct(event) {
+  event.preventDefault(); //don't reload page
+  console.log("Validation");
 
-function insertProduct() {
+  let form = document.forms['insertForm'] // get the data from the form
+  console.log(form);
+
+  if(validateForm(form)===true){
+    console.log("User Insert Values, Insert ROW")
+    product = new Product(fromElements.elements['fnameInsert'].value,fromElements.elements['quantityInsert'].value, fromElements.elements['categoryInsert'].value, fromElements.elements['priceInsert'].value);
+  }else{
+    alert("Errore nell'inserimento dati");
+    document.getElementById("insertForm").innerHTML = "Errore Inserimento Dati";
+  }
   return null;
 }
 
@@ -37,11 +56,40 @@ function updateProduct() {
   return null;
 }
 
-function deletePr() {
+function deleteProduct() {
   return null;
 }
 
-function validateForm() {
-  let form = document.forms['insertForm'];
-  product = new Product(form['fname'], form['quantity'], form['category'], form['price']);
+function validateForm(formElements) {
+  let fname = formElements.elements['fnameInsert'].value;
+  let quantity = Number(formElements.elements['quantityInsert'].value);
+  let price = Number(formElements.elements['priceInsert'].value);
+
+  if(validateFname(fname)===true && validateQuantity(quantity)===true && validatePrice(price)===true){
+    return true;
+  }else{
+    return false;
+  }
 }
+
+function validateFname(nameProduct){
+  if(nameProduct === ''){
+    return false;
+  }
+  return true;
+}
+
+function validateQuantity(quantity){
+  if(quantity < 1){
+    return false;
+  }
+  return true;
+}
+
+function validatePrice(price){
+  if(price < 1){
+    return false;
+  }
+  return true;
+}
+
