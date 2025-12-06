@@ -3,24 +3,84 @@
 <head>
   <meta charset="UTF-8">
   <title>Warehouse</title>
+  <style>
+    .app{
+        display: flex;
+    }
+    table{
+        border-collapse: collapse;
+        border-style: solid;
+        width: 100%;
+    }
+  </style>
 </head>
 <body>
-  <form>
-    <table>
-      <tr id="firstRow">
-        <td>Nome</td><td>Quantit&aacute;</td><td>Categoria</td><td>Prezzo Unitario</td>
-        <td>
-          <input type="submit" id="modify" value="Modifica">
-        </td>
-        <td>
-          <input type="submit" id="delete" value="Elimina">
-        </td>
-        <td>
-          <input type="submit" id="insert" onclick="insert()" value="Insersci Elemento">
-        </td>
-      </tr>
-    </table>
-  </form>
+  <div id="app">
+    <div id="index">
+      <h1>Warehouse</h1><br>
+    </div>
+    <div id="realContent" class="app">
+      <div id="showTable">
+        <table id="warehouse">
+          <tr id="firstRow">
+            <th>Nome</th>
+            <th>Quantit&aacute;</th>
+            <th>Categoria</th>
+            <th>Prezzo Unitario</th>
+            <th>
+              <select id="options">
+                <option id="insert">Inserisci Elemento</option>
+                <option id="modify">Modifica Elemento</option>
+                <option id="delete">Elimina Elemento</option>
+              </select>
+            </th>
+          </tr>
+        </table>
+      </div>
+      <div id="forms">
+        <form id="insertForm">
+          <label>Inserire Elemento:</label><br>
+          <label>Nome</label>
+          <input type="text" name="name" placeholder="Nome" required>
+          <label>Quantit&aacute;</label>
+          <input type="text" name="quantity" placeholder="Quantita" required><br>
+          <label>Categoria</label>
+          <input type="text" name="category" placeholder="Categoria" required>
+          <label>Prezzo Unitario</label>
+          <input type="number" name="price" placeholder="Prezzo Unitario" required><br>
+          <input type="submit" value="Inserisci">
+        </form>
+        <form id="modifyForm">
+          <label>Modifica Elemento:</label><br>
+          <label>Nome</label>
+          <input type="text" name="name" placeholder="Nome" required>
+          <label>Quantit&aacute;</label>
+          <input type="text" name="quantity" placeholder="Quantita" required><br>
+          <label>Categoria</label>
+          <input type="text" name="category" placeholder="Categoria" required>
+          <label>Prezzo Unitario</label>
+          <input type="number" name="price" placeholder="Prezzo Unitario" required><br>
+          <input type="submit" value="Modifica">
+        </form>
+
+      </div>
+    </div>
+  </div>
   <script src="src/main.js"></script>
 </body>
 </html>
+
+<!--
+    <p id="menu">
+      <label>Nome</label>
+      <label>Quantit&aacute;</label>
+      <label>Categoria</label>
+      <label>Prezzo Unitario</label>
+      <select id="options">
+        <option id="insert">Inserisci Elemento</option>
+        <option id="modify">Modifica Elemento</option>
+        <option id="delete">Elimina Elemento</option>
+      </select>
+    </p>
+
+-->
