@@ -18,66 +18,64 @@ class Product {
 }
 
 //showing which form the user will use
+/*
 function onchangeOption(){
-
   const value = document.getElementById("options").value;
-
   switch(value){
-
     case "insert":
       console.log("User choose to insert value, show insertForm");
       break;
-
     case "update":
       console.log("User choose to update value, show updateForm");
       break;
-
     case "delete":
       console.log("User choose to delete value");
       break;
   }
 }
+ */
 
 function insertProduct(event) {
   event.preventDefault(); //don't reload page
-    console.log("Validation");
-    let form = document.forms['insertForm'] // get the data from the form
-    console.log(form);
 
-    if (validateForm(form) === true) {
-      console.log("User Insert Values, Insert ROW")
-      product = new Product(form.elements['fnameInsert'].value,
-        form.elements['quantityInsert'].value,
-        form.elements['categoryInsert'].value,
-        form.elements['priceInsert'].value);
+  console.log("Validation");
+  let form = document.forms['insertForm'] // get the data from the form
+  let counter = String(products.length + 1); // for the id of the row
+  console.log(form);
 
-      //add the row to the table
-      document.getElementById("tbody").innerHTML +=
-        "<tr><td>" + product['name'] + "</td>" +
-        "<td>" + product['quantity'] + "</td>" +
-        "<td>" + product['category'] + "</td>" +
-        "<td>" + product['price'] + "</td>" +
-        "<td>" + product['date'] + "</td>" +
-        "<td><button>UPDATE ROW</button></td>" +
-        "<td><button>DELETE ROW</button></tr>";
+  if (validateForm(form) === true) {
+    console.log("User Insert Values, Insert ROW")
+    product = new Product(form.elements['fnameInsert'].value,
+      form.elements['quantityInsert'].value,
+      form.elements['categoryInsert'].value,
+      form.elements['priceInsert'].value);
+
+    //add the row to the table
+    document.getElementById("tbody").innerHTML +=
+      "<tr id='rownumber" + counter + "'><td>" + product['name'] + "</td>" +
+      "<td>" + product['quantity'] + "</td>" +
+      "<td>" + product['category'] + "</td>" +
+      "<td>" + product['price'] + "</td>" +
+      "<td>" + product['date'] + "</td>" +
+      "<td><button id='updateRow"+ counter +"' onclick='updateProduct(\"" + counter + "\")'>UPDATE ROW</button></td>" +
+      "<td><button id='deleteRow"+ counter +"' onclick='deleteProduct(\"" + counter+ "\")'>DELETE ROW</button></tr>";
 
       products.push(product); // add the product, keeps track for deleting
       console.log(products);
       form.reset()
 
-    } else {
-      alert("Errore nell'inserimento dati");
-      form.reset();
-    }
-  return null;
+  } else {
+    alert("Errore nell'inserimento dati");
+    form.reset();
+  }
 }
 
-function updateProduct() {
-  return null;
+function updateProduct(rowNumber) {
+  console.log("User choose to update value: " + rowNumber);
 }
 
-function deleteProduct() {
-  return null;
+function deleteProduct(rowNumber) {
+  console.log("User choose to delete value" + rowNumber);
 }
 
 function validateForm(formElements) {
