@@ -4,6 +4,9 @@
 *
 *
 * */
+
+const products = [];
+
 class Product {
       constructor(name, quantity, category, price) {
         this.name = name;
@@ -37,28 +40,35 @@ function onchangeOption(){
 
 function insertProduct(event) {
   event.preventDefault(); //don't reload page
-  console.log("Validation");
+    console.log("Validation");
+    let form = document.forms['insertForm'] // get the data from the form
+    console.log(form);
 
-  let form = document.forms['insertForm'] // get the data from the form
-  console.log(form);
+    if (validateForm(form) === true) {
+      console.log("User Insert Values, Insert ROW")
+      product = new Product(form.elements['fnameInsert'].value,
+        form.elements['quantityInsert'].value,
+        form.elements['categoryInsert'].value,
+        form.elements['priceInsert'].value);
 
-  if(validateForm(form)===true){
-    console.log("User Insert Values, Insert ROW")
-    product = new Product(form.elements['fnameInsert'].value,
-      form.elements['quantityInsert'].value,
-      form.elements['categoryInsert'].value,
-      form.elements['priceInsert'].value);
-    //add the row to the table
-    document.getElementById("tbody").innerHTML =
-      "<tr><td>" + product['name'] + "</td>" +
-      "<td>" + product['quantity'] +  "</td>" +
-      "<td>" + product['category'] + "</td>" +
-      "<td>" + product['price'] + "</td>" +
-      "<td>" + product['date'] + "</td>";
-  }else{
-    alert("Errore nell'inserimento dati");
-    document.getElementById("insertForm").innerHTML = "Errore Inserimento Dati";
-  }
+      //add the row to the table
+      document.getElementById("tbody").innerHTML +=
+        "<tr><td>" + product['name'] + "</td>" +
+        "<td>" + product['quantity'] + "</td>" +
+        "<td>" + product['category'] + "</td>" +
+        "<td>" + product['price'] + "</td>" +
+        "<td>" + product['date'] + "</td>" +
+        "<td><button>UPDATE ROW</button></td>" +
+        "<td><button>DELETE ROW</button></tr>";
+
+      products.push(product); // add the product, keeps track for deleting
+      console.log(products);
+      form.reset()
+
+    } else {
+      alert("Errore nell'inserimento dati");
+      form.reset();
+    }
   return null;
 }
 
