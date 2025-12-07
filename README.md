@@ -22,3 +22,16 @@ Technical Requirements:
 Styling: Free choice (CSS, SCSS, Bootstrap, Tailwind, etc.)
 
 Data Persistence: Not required — in-memory storage is sufficient
+
+# Working Method
+
+1. **HTML Core Features**
+   - Tables and forms (Insert ;and Update since is not required, it will be developed as the final features)
+
+2. **Native JavaScript**
+   - Insert method
+   - Delete method
+
+3. **JS -> React**
+
+4. **CSS -> BootStrap**
