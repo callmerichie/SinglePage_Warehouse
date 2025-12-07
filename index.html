@@ -4,16 +4,32 @@
   <meta charset="UTF-8">
   <title>Warehouse</title>
   <style>
-    .app{
+
+    #realContent{
         display: flex;
+        width: auto;
     }
-    .showTable{
-        margin: 40px;
+
+    #showTable{
+        width: 300px;
+        margin-right: 300px;
     }
-    table, th, td {
-        border: 1px solid black;
+
+    table {
+        border: 2px solid black;
         border-collapse: collapse;
-        width: 100%;
+        width: 300px;
+    }
+
+    th,td {
+        border: 1px solid black;
+        text-align: center;
+        width: auto;
+    }
+
+    #forms{
+        display: flex;
+        gap: 10px;
     }
   </style>
 </head>
@@ -22,7 +38,7 @@
     <div id="index">
       <h1>Warehouse</h1><br>
     </div>
-    <div id="realContent" class="app">
+    <div id="realContent">
       <div id="showTable">
         <table id="warehouse">
           <thead id="thead">
@@ -33,8 +49,9 @@
               <th>Prezzo Unitario</th>
               <th>Data</th>
               <th colspan="2">
-                <label for="options">Opzioni</label>
+                Opzioni
                 <!--
+                <label for="options">Opzioni</label>
                 <select id="options" name="options" onchange="onchangeOption()">
                   <option id="insert" value="insert">Inserisci Elemento</option>
                   <option id="update" value="update">Modifica Elemento</option>
@@ -50,7 +67,7 @@
       </div>
       <div id="forms">
         <form id="insertForm" onsubmit="insertProduct(event)">
-          <label for="insert">Inserire Elemento:</label><br>
+          <label for="insert" id="insert">Inserire Elemento:</label><br>
           <label for="fnameInsert">Nome</label>
           <input type="text" id="fnameInsert" name="fnameInsert" placeholder="Nome" required>
           <label for="quantityInsert">Quantit&aacute;</label>
@@ -60,9 +77,9 @@
           <label for="priceInsert">Prezzo Unitario</label>
           <input type="number" id="priceInsert" name="priceInsert" placeholder="Prezzo Unitario" required><br>
           <input type="submit" value="Inserisci">
-        </form><br>
+        </form>
         <form id="updateForm">
-          <label>Modifica Elemento:</label><br>
+          <label for="update" id="update">Modifica Elemento:</label><br>
           <label for="fnameUpdate">Nome</label>
           <input type="text" id="fnameUpdate" name="fnameModify" placeholder="Nome" required>
           <label for="quantityUpdate">Quantit&aacute;</label>
@@ -79,18 +96,3 @@
   <script src="src/main.js"></script>
 </body>
 </html>
-
-<!--
-    <p id="menu">
-      <label>Nome</label>
-      <label>Quantit&aacute;</label>
-      <label>Categoria</label>
-      <label>Prezzo Unitario</label>
-      <select id="options">
-        <option id="insert">Inserisci Elemento</option>
-        <option id="modify">Modifica Elemento</option>
-        <option id="delete">Elimina Elemento</option>
-      </select>
-    </p>
-
--->
