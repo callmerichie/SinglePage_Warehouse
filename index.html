@@ -70,15 +70,19 @@
           <label for="insert" id="insert">Inserire Elemento:</label><br>
           <label for="fnameInsert">Nome</label>
           <input type="text" id="fnameInsert" name="fnameInsert" placeholder="Nome" required>
+
           <label for="quantityInsert">Quantit&aacute;</label>
           <input type="number" id="quantityInsert" name="quantityInsert" placeholder="Quantit&aacute;" required><br>
+
           <label for="categoryInsert">Categoria</label>
           <input type="text" id="categoryInsert" name="categoryInsert" placeholder="Categoria" required>
+
           <label for="priceInsert">Prezzo Unitario</label>
           <input type="number" id="priceInsert" name="priceInsert" placeholder="Prezzo Unitario" required><br>
           <input type="submit" value="Inserisci">
         </form>
-        <form id="updateForm">
+        <form id="updateForm" onsubmit="updateValues(event)">
+          <!--
           <label for="update" id="update">Modifica Elemento:</label><br>
           <label for="fnameUpdate">Nome</label>
           <input type="text" id="fnameUpdate" name="fnameModify" placeholder="Nome" required>
@@ -89,6 +93,7 @@
           <label for="priceUpdate">Prezzo Unitario</label>
           <input type="number" id="priceUpdate" name="priceModify" placeholder="Prezzo Unitario" required><br>
           <input type="submit" value="Modifica">
+          -->
         </form>
       </div>
     </div>

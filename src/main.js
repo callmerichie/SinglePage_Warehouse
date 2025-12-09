@@ -43,9 +43,12 @@ function insertProduct(event) {
 
   console.log("Validation");
   let form = document.forms['insertForm']; // get the data from the form
-  console.log(form);
 
-  if (validateForm(form) === true) {
+  for(let element of form.elements) {
+    console.log(form.element, element.value);
+  }
+
+  if (validateForm(form, 'insert') === true) {
     console.log("User Insert Values, Insert ROW");
 
     AUTO_INCREMENT += 1
@@ -63,8 +66,8 @@ function insertProduct(event) {
       "<td>" + product['category'] + "</td>" +
       "<td>" + product['price'] + "</td>" +
       "<td>" + product['date'] + "</td>" +
-      "<td><button id='updateRow"+ idProduct +"' onclick='updateProduct(\"" + idProduct + "\")'>UPDATE ROW</button></td>" +
-      "<td><button id='deleteRow"+ idProduct +"' onclick='deleteProduct(\"" + idProduct + "\")'>DELETE ROW</button></tr>";
+      "<td><button id='updateRow"+ idProduct + "' onclick='updateProductForm(\"" + idProduct + "\")'>UPDATE ROW</button></td>" +
+      "<td><button id='deleteRow"+ idProduct + "' onclick='deleteProduct(\"" + idProduct + "\")'>DELETE ROW</button></tr>";
 
       products.push(product); // add the product, keeps track for deleting
       //console.log(products);
@@ -76,9 +79,49 @@ function insertProduct(event) {
   }
 }
 
-function updateProduct(idProduct) {
+function updateProductForm(idProduct) {
   console.log("User choose to update value: " + idProduct);
+
+  let rowIdProduct = Number(idProduct)-1;
+
+  //show update form
+  document.getElementById("updateForm").innerHTML +=
+    "<label for=\"update\" id=\"update\">Modifica Elemento:</label><br>" +
+    "<label for=\"fnameUpdate\">Nome</label>" +
+    "<input type=\"text\" id=\"fnameUpdate\" name=\"fnameModify\" placeholder=" + products[rowIdProduct]['name'] + " required>" +
+
+    "<label for=\"quantityUpdate\">Quantit&aacute;</label>" +
+    "<input type=\"number\" id=\"quantityUpdate\" name=\"quantityModify\" placeholder=" + products[rowIdProduct]['quantity'] + " required><br>" +
+
+    "<label for=\"categoryUpdate\">Categoria</label>" +
+    "<input type=\"text\" id=\"categoryUpdate\" name=\"categoryModify\" placeholder=" + products[rowIdProduct]['category'] + " required>" +
+
+    "<label for=\"priceUpdate\">Prezzo Unitario</label>" +
+    "<input type=\"number\" id=\"priceUpdate\" name=\"priceModify\" placeholder=" + products[rowIdProduct]['price'] + " required><br>" +
+    "<input type=\"submit\" value=\"Modifica\">"
+
+
 }
+
+function updateValues(event){
+  event.preventDefault(); //don't reload page
+
+  console.log("Validation");
+  let form = document.forms['updateForm']; // get the data from the form
+
+  for(let element of form.elements) {
+    console.log(form.element, element.value);
+  }
+
+  // if (validateForm(form, 'update') === true) {
+  //   console.log("User Insert New Values, Update ROW");
+  // } else {
+  //   alert("Errore nell'inserimento dati");
+  //   form.reset();
+  // }
+}
+
+
 
 function deleteProduct(idProduct) {
   console.log("User choose to delete value: " + idProduct);
@@ -101,10 +144,22 @@ function deleteProduct(idProduct) {
   console.log(products);
 }
 
-function validateForm(formElements) {
-  let fname = formElements.elements['fnameInsert'].value;
-  let quantity = Number(formElements.elements['quantityInsert'].value);
-  let price = Number(formElements.elements['priceInsert'].value);
+function validateForm(formElements, typeValidation) {
+  let fname, quantity, price;
+  switch (typeValidation) {
+    case 'insert':
+      fname = formElements.elements['fnameInsert'].value;
+      quantity = Number(formElements.elements['quantityInsert'].value);
+      price = Number(formElements.elements['priceInsert'].value);
+    case 'update':
+      fname = formElements.elements['fnameUpdate'].value;
+      quantity = Number(formElements.elements['quantityUpdate'].value);
+      price = Number(formElements.elements['priceUpdate'].value);
+    default:
+      console.log("Errore nell'inserimento dati");
+      return false;
+  }
+
 
   if(validateFname(fname)===true && validateQuantity(quantity)===true && validatePrice(price)===true){
     return true;
