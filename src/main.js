@@ -117,15 +117,10 @@ function updateValues(event){
 
   let rowIndex = String(temporaryROWINDEX);
   let indexObject = findIndex(rowIndex);
-  let rowNewIndex = String(AUTO_INCREMENT + 1);
   let fullName = "rowNumber" + rowIndex;
   console.log(fullName);
   let rowToDelete = document.getElementById(fullName);
   let form = document.forms['updateForm']; // get the data from the form
-
-  //delete old row and form
-  rowToDelete.remove();
-  form.remove();
 
 
   for(let element of form.elements) {
@@ -136,24 +131,28 @@ function updateValues(event){
   if (validateForm(form, validationUpdate) === true) {
     console.log("User Insert New Values, Update ROW");
 
+    //delete old row and form
+    rowToDelete.remove();
+    form.remove();
+
     //changing the values in the new ones
     products[indexObject]['name'] = form.elements['fnameUpdate'].value;
     products[indexObject]['quantity'] = form.elements['quantityUpdate'].value;
     products[indexObject]['price'] = form.elements['priceUpdate'].value;
     products[indexObject]['category'] = form.elements['categoryUpdate'].value;
-    products[indexObject]['date'] = new Date();
+    products[indexObject]['date'] = new Date(year,month,day,hours,minutes,seconds);
 
 
     //add the row to the table
     document.getElementById("tbody").innerHTML +=
-        "<tr id='rowNumber" + rowNewIndex + "'>" +
+        "<tr id='rowNumber" + rowIndex + "'>" +
           "<td>" + products[indexObject]['name'] + "</td>" +
           "<td>" + products[indexObject]['quantity'] + "</td>" +
           "<td>" + products[indexObject]['category'] + "</td>" +
           "<td>" + products[indexObject]['price'] + "</td>" +
           "<td>" + products[indexObject]['date'] + "</td>" +
-          "<td><button id='updateRow"+ rowNewIndex + "' onclick='updateProductForm(\"" + rowNewIndex + "\")'>UPDATE ROW</button></td>" +
-          "<td><button id='deleteRow"+ rowNewIndex + "' onclick='deleteProduct(\"" + rowNewIndex + "\")'>DELETE ROW</button></td>" +
+          "<td><button id='updateRow"+ rowIndex + "' onclick='updateProductForm(\"" + rowIndex + "\")'>UPDATE ROW</button></td>" +
+          "<td><button id='deleteRow"+ rowIndex + "' onclick='deleteProduct(\"" + rowIndex + "\")'>DELETE ROW</button></td>" +
         "</tr>";
 
   } else {
