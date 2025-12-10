@@ -72,8 +72,8 @@ function insertProduct(event) {
         "<td>" + product['category'] + "</td>" +
         "<td>" + product['price'] + "</td>" +
         "<td>" + product['date'] + "</td>" +
-        "<td><button id='updateRow"+ idProduct + "' onclick='updateProductForm(\"" + idProduct + "\")'>UPDATE ROW</button></td>" +
-        "<td><button id='deleteRow"+ idProduct + "' onclick='deleteProduct(\"" + idProduct + "\")'>DELETE ROW</button></td>" +
+        "<td><button id='updateRow"+ idProduct + "' class=\"btn btn-warning\" onclick='updateProductForm(\"" + idProduct + "\")'>UPDATE ROW</button></td>" +
+        "<td><button id='deleteRow"+ idProduct + "' class=\"btn btn-danger\" onclick='deleteProduct(\"" + idProduct + "\")'>DELETE ROW</button></td>" +
       "</tr>";
 
       products.push(product); // add the product, keeps track for deleting
@@ -98,19 +98,19 @@ function updateProductForm(rowIndex) {
   //show update form
   document.getElementById("update").innerHTML =
     "<form id=\"updateForm\" onsubmit=\"updateValues(event)\">" +
-    "<label for=\"update\" id=\"update\">Modifica Elemento:</label><br>" +
-    "<label for=\"fnameUpdate\">Nome</label>" +
-    "<input type=\"text\" id=\"fnameUpdate\" name=\"fnameUpdate\" placeholder=" + products[indexObject]['name'] + " required>" +
+    "<label for=\"update\" id=\"update\" class=\"form-label\">Modifica Elemento:</label><br>" +
+    "<label for=\"fnameUpdate\" class=\"form-label\">Nome</label>" +
+    "<input type=\"text\" id=\"fnameUpdate\" class=\"form-control\" name=\"fnameUpdate\" placeholder=" + products[indexObject]['name'] + " required>" +
 
-    "<label for=\"quantityUpdate\">Quantit&aacute;</label>" +
-    "<input type=\"number\" id=\"quantityUpdate\" name=\"quantityUpdate\" placeholder=" + products[indexObject]['quantity'] + " required><br>" +
+    "<label for=\"quantityUpdate\" class=\"form-label\">Quantit&aacute;</label>" +
+    "<input type=\"number\" id=\"quantityUpdate\" class=\"form-control\" name=\"quantityUpdate\" placeholder=" + products[indexObject]['quantity'] + " required>" +
 
-    "<label for=\"categoryUpdate\">Categoria</label>" +
-    "<input type=\"text\" id=\"categoryUpdate\" name=\"categoryUpdate\" placeholder=" + products[indexObject]['category'] + " required>" +
+    "<label for=\"categoryUpdate\" class=\"form-label\">Categoria</label>" +
+    "<input type=\"text\" id=\"categoryUpdate\" class=\"form-control\" name=\"categoryUpdate\" placeholder=" + products[indexObject]['category'] + " required>" +
 
-    "<label for=\"priceUpdate\">Prezzo Unitario</label>" +
-    "<input type=\"number\" id=\"priceUpdate\" name=\"priceUpdate\" placeholder=" + products[indexObject]['price'] + " required><br>" +
-    "<input type=\"submit\" value=\"Modifica\">" +
+    "<label for=\"priceUpdate\" class=\"form-label\">Prezzo Unitario</label>" +
+    "<input type=\"number\" id=\"priceUpdate\" class=\"form-control\" name=\"priceUpdate\" placeholder=" + products[indexObject]['price'] + " required><br>" +
+    "<input type=\"submit\" class=\"btn btn-primary\" value=\"Modifica\">" +
     "</form>";
 }
 
@@ -155,8 +155,8 @@ function updateValues(event){
           "<td>" + products[indexObject]['category'] + "</td>" +
           "<td>" + products[indexObject]['price'] + "</td>" +
           "<td>" + products[indexObject]['date'] + "</td>" +
-          "<td><button id='updateRow"+ rowIndex + "' onclick='updateProductForm(\"" + rowIndex + "\")'>UPDATE ROW</button></td>" +
-          "<td><button id='deleteRow"+ rowIndex + "' onclick='deleteProduct(\"" + rowIndex + "\")'>DELETE ROW</button></td>" +
+          "<td><button id='updateRow" + rowIndex + "' class=\"btn btn-warning\" onclick='updateProductForm(\"" + rowIndex + "\")'>UPDATE ROW</button></td>" +
+          "<td><button id='deleteRow" + rowIndex + "' class=\"btn btn-danger\" onclick='deleteProduct(\"" + rowIndex + "\")'>DELETE ROW</button></td>" +
         "</tr>";
 
   } else {

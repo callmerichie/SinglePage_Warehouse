@@ -43,4 +43,4 @@ Data Persistence: Not required — in-memory storage is sufficient
      - In this method, after the user submitted and passes the row index that helps me to identify the right row to delete. I can remove from the UI 
        the row and find which of the array index to delete with the findIndex method.
 
-3. **CSS -> BootStrap**
+3. **CSS -> BootStrap5**
