@@ -246,5 +246,5 @@ function fixDate(datetoFix){
   let hour = datetoFix.getHours();
   let minute = datetoFix.getMinutes();
   let second = datetoFix.getSeconds();
-  return finaldate = year + "-" + month + "-" + day + "/" + hour + ":" + minute + ":" + second;
+  return finaldate = year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
 }

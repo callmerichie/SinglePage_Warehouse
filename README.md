@@ -29,14 +29,18 @@ Data Persistence: Not required — in-memory storage is sufficient
    - Tables and forms (Insert and Update)
 
 2. **Vanilla JavaScript**
-   - Insert method:
+   - Insert method: The insertProduct method is responsible for handling the creation of new products inside the warehouse management interface.
      - Pool lane diagram:
        ![INSERT.drawio.png](INSERT.drawio.png)
-       - In this method, I forced the page to not reload and catch the event submitted by the user. After I catched the values, 
-       I'm able to check them with the validation method (it gaves me an alert if the values are not correct and force the user to retype them again).
-       Later on I create an object to store in an array, I will use this array to keep track of the products and to delete them.
-       The last step, is to call the tbody and append the new row to add.
+       - In this method, I forced the page to not reload and catch the event submitted by the user. The function accesses the form’s input fields and extracts the values entered by the user (name, quantity, category, price).
+       After I catched the values, I'm able to validate them with the validation method (it gaves me an alert if the values are not correct and force the user to retype them again, values checked: price > 0, quantity > 0 and name required).
+       Later on I create an object to store into an array, I will use this array to keep track of the products and to delete them.
+       The last step, is to call the tbody and append the new row to add updating the User Interface.
        
-   - Delete method:
+   - Delete method: is responsible to delete the prodcut form the UI and form the array storing the products
+     - Pool lane diagram:
+       ![DELETE.drawio.png](DELETE.drawio.png)
+     - In this method, after the user submitted and passes the row index that helps me to identify the right row to delete. I can remove from the UI 
+       the row and find which of the array index to delete with the findIndex method.
 
 3. **CSS -> BootStrap**
