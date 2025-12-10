@@ -19,7 +19,9 @@ class Product {
         this.quantity = quantity;
         this.category = category;
         this.price = price;
-        this.date = new Date();
+
+        let dateToFix = new Date();
+        this.date = fixDate(dateToFix);
       }
 }
 
@@ -121,6 +123,7 @@ function updateValues(event){
   console.log(fullName);
   let rowToDelete = document.getElementById(fullName);
   let form = document.forms['updateForm']; // get the data from the form
+  let dateUpdate;
 
 
   for(let element of form.elements) {
@@ -140,7 +143,8 @@ function updateValues(event){
     products[indexObject]['quantity'] = form.elements['quantityUpdate'].value;
     products[indexObject]['price'] = form.elements['priceUpdate'].value;
     products[indexObject]['category'] = form.elements['categoryUpdate'].value;
-    products[indexObject]['date'] = new Date(year,month,day,hours,minutes,seconds);
+    dateUpdate = fixDate(new Date());
+    products[indexObject]['date'] = dateUpdate;
 
 
     //add the row to the table
@@ -231,4 +235,16 @@ function findIndex(rowIndex){
       return i;
     }
   }
+}
+
+//parsing of the date
+function fixDate(datetoFix){
+  let finaldate;
+  let year = datetoFix.getFullYear();
+  let month = datetoFix.getMonth();
+  let day = datetoFix.getDate();
+  let hour = datetoFix.getHours();
+  let minute = datetoFix.getMinutes();
+  let second = datetoFix.getSeconds();
+  return finaldate = year + "-" + month + "-" + day + "/" + hour + ":" + minute + ":" + second;
 }

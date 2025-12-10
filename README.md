@@ -26,12 +26,17 @@ Data Persistence: Not required — in-memory storage is sufficient
 # Working Method
 
 1. **HTML Core Features**
-   - Tables and forms (Insert ;and Update since is not required, it will be developed as the final features)
+   - Tables and forms (Insert and Update)
 
-2. **Native JavaScript**
-   - Insert method
-   - Delete method
+2. **Vanilla JavaScript**
+   - Insert method:
+     - Pool lane diagram:
+       ![INSERT.drawio.png](INSERT.drawio.png)
+       - In this method, I forced the page to not reload and catch the event submitted by the user. After I catched the values, 
+       I'm able to check them with the validation method (it gaves me an alert if the values are not correct and force the user to retype them again).
+       Later on I create an object to store in an array, I will use this array to keep track of the products and to delete them.
+       The last step, is to call the tbody and append the new row to add.
+       
+   - Delete method:
 
-3. **JS -> React**
-
-4. **CSS -> BootStrap**
+3. **CSS -> BootStrap**
