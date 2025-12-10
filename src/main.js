@@ -98,7 +98,7 @@ function updateProductForm(rowIndex) {
   //show update form
   document.getElementById("update").innerHTML =
     "<form id=\"updateForm\" onsubmit=\"updateValues(event)\">" +
-    "<label for=\"update\" id=\"update\" class=\"form-label\">Modifica Elemento:</label><br>" +
+    "<label for=\"update\" id=\"update\" class=\"form-label\"><b>Modifica Elemento:</b></label><br>" +
     "<label for=\"fnameUpdate\" class=\"form-label\">Nome</label>" +
     "<input type=\"text\" id=\"fnameUpdate\" class=\"form-control\" name=\"fnameUpdate\" placeholder=" + products[indexObject]['name'] + " required>" +
 
