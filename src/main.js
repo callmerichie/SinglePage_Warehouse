@@ -19,7 +19,9 @@ class Product {
         this.quantity = quantity;
         this.category = category;
         this.price = price;
-        this.date = new Date();
+
+        let dateToFix = new Date();
+        this.date = fixDate(dateToFix);
       }
 }
 
@@ -44,12 +46,12 @@ function onchangeOption(){
 function insertProduct(event) {
   event.preventDefault(); //don't reload page
 
-  console.log("Validation");
+  // console.log("Validation");
   let form = document.forms['insertForm']; // get the data from the form
 
-  for(let element of form.elements) {
-    console.log(element.value);
-  }
+  // for(let element of form.elements) {
+  //   console.log(element.value);
+  // }
 
   if (validateForm(form, valdationInsert) === true) {
     console.log("User Insert Values, Insert ROW");
@@ -70,8 +72,8 @@ function insertProduct(event) {
         "<td>" + product['category'] + "</td>" +
         "<td>" + product['price'] + "</td>" +
         "<td>" + product['date'] + "</td>" +
-        "<td><button id='updateRow"+ idProduct + "' onclick='updateProductForm(\"" + idProduct + "\")'>UPDATE ROW</button></td>" +
-        "<td><button id='deleteRow"+ idProduct + "' onclick='deleteProduct(\"" + idProduct + "\")'>DELETE ROW</button></td>" +
+        "<td><button id='updateRow"+ idProduct + "' class=\"btn btn-warning\" onclick='updateProductForm(\"" + idProduct + "\")'>UPDATE ROW</button></td>" +
+        "<td><button id='deleteRow"+ idProduct + "' class=\"btn btn-danger\" onclick='deleteProduct(\"" + idProduct + "\")'>DELETE ROW</button></td>" +
       "</tr>";
 
       products.push(product); // add the product, keeps track for deleting
@@ -85,30 +87,30 @@ function insertProduct(event) {
 }
 
 function updateProductForm(rowIndex) {
-  console.log("User choose to update value: " + rowIndex);
+  // console.log("User choose to update value: " + rowIndex);
 
   // find product to update
   let indexObject = findIndex(rowIndex);
 
-  //save to temporarily the id of the line to get rid of
+  //save temporarily the id of the line to get rid of
   temporaryROWINDEX = rowIndex;
 
   //show update form
   document.getElementById("update").innerHTML =
     "<form id=\"updateForm\" onsubmit=\"updateValues(event)\">" +
-    "<label for=\"update\" id=\"update\">Modifica Elemento:</label><br>" +
-    "<label for=\"fnameUpdate\">Nome</label>" +
-    "<input type=\"text\" id=\"fnameUpdate\" name=\"fnameUpdate\" placeholder=" + products[indexObject]['name'] + " required>" +
+    "<label for=\"update\" id=\"update\" class=\"form-label\"><b>Modifica Elemento:</b></label><br>" +
+    "<label for=\"fnameUpdate\" class=\"form-label\">Nome</label>" +
+    "<input type=\"text\" id=\"fnameUpdate\" class=\"form-control\" name=\"fnameUpdate\" placeholder=" + products[indexObject]['name'] + " required>" +
 
-    "<label for=\"quantityUpdate\">Quantit&aacute;</label>" +
-    "<input type=\"number\" id=\"quantityUpdate\" name=\"quantityUpdate\" placeholder=" + products[indexObject]['quantity'] + " required><br>" +
+    "<label for=\"quantityUpdate\" class=\"form-label\">Quantit&aacute;</label>" +
+    "<input type=\"number\" id=\"quantityUpdate\" class=\"form-control\" name=\"quantityUpdate\" placeholder=" + products[indexObject]['quantity'] + " required>" +
 
-    "<label for=\"categoryUpdate\">Categoria</label>" +
-    "<input type=\"text\" id=\"categoryUpdate\" name=\"categoryUpdate\" placeholder=" + products[indexObject]['category'] + " required>" +
+    "<label for=\"categoryUpdate\" class=\"form-label\">Categoria</label>" +
+    "<input type=\"text\" id=\"categoryUpdate\" class=\"form-control\" name=\"categoryUpdate\" placeholder=" + products[indexObject]['category'] + " required>" +
 
-    "<label for=\"priceUpdate\">Prezzo Unitario</label>" +
-    "<input type=\"number\" id=\"priceUpdate\" name=\"priceUpdate\" placeholder=" + products[indexObject]['price'] + " required><br>" +
-    "<input type=\"submit\" value=\"Modifica\">" +
+    "<label for=\"priceUpdate\" class=\"form-label\">Prezzo Unitario</label>" +
+    "<input type=\"number\" id=\"priceUpdate\" class=\"form-control\" name=\"priceUpdate\" placeholder=" + products[indexObject]['price'] + " required><br>" +
+    "<input type=\"submit\" class=\"btn btn-primary\" value=\"Modifica\">" +
     "</form>";
 }
 
@@ -118,18 +120,19 @@ function updateValues(event){
   let rowIndex = String(temporaryROWINDEX);
   let indexObject = findIndex(rowIndex);
   let fullName = "rowNumber" + rowIndex;
-  console.log(fullName);
+  // console.log(fullName);
   let rowToDelete = document.getElementById(fullName);
   let form = document.forms['updateForm']; // get the data from the form
+  let dateUpdate;
 
 
-  for(let element of form.elements) {
-    console.log(element.value);
-  }
+  // for(let element of form.elements) {
+  //   console.log(element.value);
+  // }
 
-  console.log("Validation");
+  // console.log("Validation");
   if (validateForm(form, validationUpdate) === true) {
-    console.log("User Insert New Values, Update ROW");
+    // console.log("User Insert New Values, Update ROW");
 
     //delete old row and form
     rowToDelete.remove();
@@ -140,7 +143,8 @@ function updateValues(event){
     products[indexObject]['quantity'] = form.elements['quantityUpdate'].value;
     products[indexObject]['price'] = form.elements['priceUpdate'].value;
     products[indexObject]['category'] = form.elements['categoryUpdate'].value;
-    products[indexObject]['date'] = new Date(year,month,day,hours,minutes,seconds);
+    dateUpdate = fixDate(new Date());
+    products[indexObject]['date'] = dateUpdate;
 
 
     //add the row to the table
@@ -151,8 +155,8 @@ function updateValues(event){
           "<td>" + products[indexObject]['category'] + "</td>" +
           "<td>" + products[indexObject]['price'] + "</td>" +
           "<td>" + products[indexObject]['date'] + "</td>" +
-          "<td><button id='updateRow"+ rowIndex + "' onclick='updateProductForm(\"" + rowIndex + "\")'>UPDATE ROW</button></td>" +
-          "<td><button id='deleteRow"+ rowIndex + "' onclick='deleteProduct(\"" + rowIndex + "\")'>DELETE ROW</button></td>" +
+          "<td><button id='updateRow" + rowIndex + "' class=\"btn btn-warning\" onclick='updateProductForm(\"" + rowIndex + "\")'>UPDATE ROW</button></td>" +
+          "<td><button id='deleteRow" + rowIndex + "' class=\"btn btn-danger\" onclick='deleteProduct(\"" + rowIndex + "\")'>DELETE ROW</button></td>" +
         "</tr>";
 
   } else {
@@ -163,7 +167,7 @@ function updateValues(event){
 
 
 function deleteProduct(idProduct) {
-  console.log("User choose to delete value: " + idProduct);
+  // console.log("User choose to delete value: " + idProduct);
 
   let rowId = "rowNumber" + idProduct;
   let row = document.getElementById(rowId);
@@ -231,4 +235,16 @@ function findIndex(rowIndex){
       return i;
     }
   }
+}
+
+//parsing of the date
+function fixDate(datetoFix){
+  let finaldate;
+  let year = datetoFix.getFullYear();
+  let month = datetoFix.getMonth();
+  let day = datetoFix.getDate();
+  let hour = datetoFix.getHours();
+  let minute = datetoFix.getMinutes();
+  let second = datetoFix.getSeconds();
+  return finaldate = year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
 }
